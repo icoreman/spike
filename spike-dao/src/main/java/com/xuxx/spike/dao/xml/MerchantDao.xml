@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xuxx.spike.dao.MerchantDao">
+
+	<select id="queryMerchantById" parameterType="string" resultType="merchant">
+		select * from spike_merchant where id = #{value}
+	</select>
+	
+	<insert id="insertMerchant" parameterType="merchant">
+		insert into spike_merchant (ID,MERCHANT_NAME,MERCHANT_SHOPNAME,MERCHANT_ACCOUNT,MERCHANT_PASSWORD,MERCHANT_SCOPE) 
+		value(#{merchantName},#{merchantShopname},#{merchantAccount},#{merchantPassword},#{merchantScope})
+	</insert>
+	
+	<delete id="deleteMerchantbyid" parameterType="string">
+		delete from spike_merchant where id = #{id}
+	</delete>
+	
+	<update id="updateMerchant" parameterType="merchant">
+	update Merchant set MERCHANT_NAME=#{merchantName},MERCHANT_SHOPNAME=#{merchantShopname},MERCHANT_ACCOUNT=#{merchantAccount},
+		MERCHANT_PASSWORD=#{merchantPassword},MERCHANT_SCOPE=#{merchantScope}
+	where ID=#{id}
+	</update>
+	
+	<sql id="consutomsql" >
+		<if test="constomMerchant != null">
+			<if test="constomMerchant.merchantName!=null and constomMerchant.merchantName!=''">
+					and MERCHANT_NAME = "${constomMerchant.merchantName}"
+				</if>
+				<if test="constomMerchant.merchantShopname!=null and constomMerchant.merchantShopname!='' ">
+					and MERCHANT_SHOPNAME = "${constomMerchant.merchantShopname}"
+			</if>
+			<if test="constomMerchant.merchantAccount!=null and constomMerchant.merchantAccount!='' ">
+					and MERCHANT_ACCOUNT = "${constomMerchant.merchantAccount}"
+			</if>
+			<if test="constomMerchant.merchantScope!=null and constomMerchant.merchantScope!='' ">
+					and MERCHANT_SCOPE = "${constomMerchant.merchantScope}"
+			</if>
+		</if>
+	</sql>
+	
+	<select id="queryMerchantByVO" parameterType="merchantVo" resultType="merchant">
+	select * from spike_merchant
+		<where>
+			<include refid="consutomsql"></include>
+		</where>
+	</select>
+	
+	<select id="queryMerchantByaccount" parameterType="string" resultType="merchant">
+		select * from spike_merchant where MERCHANT_ACCOUNT = #{value}
+	</select>
+	
+</mapper>

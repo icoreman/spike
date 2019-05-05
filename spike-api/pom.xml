@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xuxx</groupId>
+    <artifactId>spike-parent</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <artifactId>spike-api</artifactId>
+  <name>spike-api</name>
+  <description>service 层接口定义</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.xuxx</groupId>
+  		<artifactId>spike-entity</artifactId>
+  		<version>${spike-platform.version}</version>
+  	</dependency>
+  </dependencies>
+</project>
