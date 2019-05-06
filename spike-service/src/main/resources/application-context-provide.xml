@@ -7,7 +7,7 @@
 	http://dubbo.apache.org/schema/dubbo 
 	http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 	<dubbo:application name="SPIKE_SERVICE" />
-	<dubbo:registry address="zookeeper://192.168.1.105:2181" />
+	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 	<dubbo:protocol name="dubbo" port="-1" />
-	<dubbo:annotation package="com.xuxx.spike.service"/>
+	<dubbo:annotation package="com.xuxx.spike.service.*"/>
 </beans>

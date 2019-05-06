@@ -5,6 +5,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
 	<typeAliases>
-		<package name="com.xuxx.spike.*" />
+		<package name="com.xuxx.spike" />
 	</typeAliases>
 </configuration>

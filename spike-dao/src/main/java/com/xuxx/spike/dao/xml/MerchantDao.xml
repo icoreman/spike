@@ -10,8 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertMerchant" parameterType="merchant">
+		<selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+			select REPLACE(UUID(),'-','')
+		</selectKey>
 		insert into spike_merchant (ID,MERCHANT_NAME,MERCHANT_SHOPNAME,MERCHANT_ACCOUNT,MERCHANT_PASSWORD,MERCHANT_SCOPE) 
-		value(#{merchantName},#{merchantShopname},#{merchantAccount},#{merchantPassword},#{merchantScope})
+		value(#{id},#{merchantName},#{merchantShopname},#{merchantAccount},#{merchantPassword},#{merchantScope})
 	</insert>
 	
 	<delete id="deleteMerchantbyid" parameterType="string">
@@ -41,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</sql>
 	
-	<select id="queryMerchantByVO" parameterType="merchantVo" resultType="merchant">
+	<select id="queryMerchantByVO" resultType="merchant">
 	select * from spike_merchant
 		<where>
 			<include refid="consutomsql"></include>

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/merchant")
 public class MerchantController {
-	@Reference
+	@Autowired
 	private MerchantService merchantService;
 
 	@RequestMapping("addPage")
@@ -29,7 +29,7 @@ public class MerchantController {
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String add(Merchant merchant) {
 		merchantService.insertMerchant(merchant);
-		log.debug("add merchant:{}", merchant);
+		log.info("add merchant:{}", merchant);
 		return "redirect:querybyvo";
 	}
 
