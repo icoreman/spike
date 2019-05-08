@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>商家</title>
 </head>
 <body>
 欢迎商家：${msmerchant.merchantaccount}
-<a href="/spike-web/merchantLogin/regiterPage">商家注册</a></br>
-<a href="/spike-web/merchantLogin/loginPage">商家登录</a>
-<a href="/spike-webB/merchantLogin/exit">商家退出登录</a>
-<a href="/spike-web/order/queryorderbyMerchanId">订单查询</a>
+<a href="/spike-web/merichantAdmin/toregister">商家注册</a></br>
+<a href="/spike-web/merichantAdmin/tologin">商家登录</a>
+<a href="/spike-webB/merichantAdmin/logout">商家退出登录</a>
 </body>
 </html>

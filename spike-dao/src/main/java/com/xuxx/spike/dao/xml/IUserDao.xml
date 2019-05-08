@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xuxx.spike.dao.IUserDao">
+	<select id="getById" parameterType="string" resultType="user">
+		select * from spike_user where
+		ID=#{value}
+	</select>
+
+	<insert id="add" parameterType="user">
+		<selectKey keyProperty="id" resultType="string" order="BEFORE">
+			select REPLACE(UUID(),'-','')
+		</selectKey>
+		insert into spike_user
+		(ID,USER_NAME,USER_ACCOUNT,USER_PASSWORD,USER_GENDER,USER_AGE,USER_ADDRESS,USER_EMAIL)
+		value(#{id},#{userName},#{userAccount},#{userPassword},#{userGender},#{userAge},#{userAddress},#{userEmail})
+	</insert>
+
+	<delete id="delete" parameterType="string">
+		delete from spike_user where ID = #{id}
+	</delete>
+
+	<update id="update" parameterType="merchant">
+		update spike_user set
+		USER_NAME=#{userName},USER_ACCOUNT=#{userAccount},USER_PASSWORD=#{userPassword},USER_GENDER=#{userGender},
+		USER_AGE=#{userAge},USER_ADDRESS=#{userAddress},USER_EMAIL=#{userEmail}
+		where ID=#{id}
+	</update>
+
+	<sql id="consutomsql">
+		<if test="constomUser != null">
+			<if test="constomUser.name!=null and constomUser.name!=''">
+				and USER_NAME = "${constomUser.name}"
+			</if>
+			<if test="constomUser.userAccount!=null and constomUser.userAccount!='' ">
+				and USER_ACCOUNT = "${constomUser.userAccount}"
+			</if>
+			<if test="constomUser.userPassword!=null and constomUser.userPassword!='' ">
+				and USER_PASSWORD = "${constomUser.userPassword}"
+			</if>
+			<if test="constomUser.userSex!=null and constomUser.userSex!='' ">
+				and USER_GENDER = "${constomUser.userSex}"
+			</if>
+			<if test="constomUser.userAge!=null and constomUser.userAge!='' ">
+				and USER_AGE = "${constomUser.userAge}"
+			</if>
+			<if test="constomUser.userAddress!=null and constomUser.userAddress!='' ">
+				and USER_ADDRESS = "${constomUser.userAddress}"
+			</if>
+			<if test="constomUser.userEmail!=null and constomUser.userEmail!='' ">
+				and USER_EMAIL = "${constomUser.userEmail}"
+			</if>
+		</if>
+	</sql>
+
+	<select id="listByVO" parameterType="userVO" resultType="user">
+		select * from spike_user
+		<where>
+			<include refid="consutomsql"></include>
+		</where>
+	</select>
+
+	<select id="getByUserAccount" parameterType="string" resultType="user">
+		select *
+		from spike_user
+		where USER_ACCOUNT = #{value}
+	</select>
+
+</mapper>

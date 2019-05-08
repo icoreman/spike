@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>注册用户</title>
 </head>
 <body>
 <form action="regiter" method="post">
-	商家的姓名:<input name="merchantname"></br>
-	商家的店铺名称:<input name="merchantshopname"></br>
-	商家账号:<input name="merchantaccount"></br>
-	商家密码:<input name="merchantpassword"></br>
-	商家经营范围:<input name="merchantscope"></br>
+	用户姓名:<input name="userName"></br>
+	用户账号:<input name="userAccount"></br>
+	用户密码:<input name="userPassword"></br>
+	用户性别:<input name="userGender"></br>
+	用户年龄:<input name="userAge"></br>
+	用户的地址:<input name="userAddress"></br>
+	用户的邮箱:<input name="userEmail"></br>
 	<input type="button" value="提交" onclick="submit(this)">
 </form>
 </body>

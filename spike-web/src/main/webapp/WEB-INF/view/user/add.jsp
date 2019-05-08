@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>商家注册</title>
+<title>Insert title here</title>
 </head>
 <body>
 <form action="add" method="post">
-	商家的姓名:<input name="merchantName"></br>
-	商家的店铺名称:<input name="merchantShopname"></br>
-	商家账号:<input name="merchantAccount"></br>
-	商家密码:<input type="password" name="merchantPassword"></br>
-	商家经营范围:<input name="merchantScope"></br>
+	用户姓名:<input name="userName"></br>
+	用户账号:<input name="userAccount"></br>
+	用户密码:<input name="userPassword"></br>
+	用户性别:<input name="userGender"></br>
+	用户年龄:<input name="userAge"></br>
+	用户的地址:<input name="userAddress"></br>
+	用户的邮箱:<input name="userEmail"></br>
 	<input type="button" value="提交" onclick="submit(this)">
 </form>
 </body>

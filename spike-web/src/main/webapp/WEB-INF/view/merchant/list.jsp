@@ -18,14 +18,14 @@
 		<td>商家经营范围</td>
 		<td>操作</td>
 	</tr>
-	<c:forEach items="${msmerchantlist}" var="item">
+	<c:forEach items="${merchantList}" var="item">
 		<tr>
-			<td>${item.merchantname }</td>
-			<td>${item.merchantshopname }</td>
-			<td>${item.merchantaccount }</td>
-			<td>${item.merchantpassword }</td>
-			<td>${item.merchantscope }</td>
-			<td><a href="toupdate?id=${item.id}">修改</a>||<a href="del?id=${item.id}">删除</a>||<a href="querybyid?id=${item.id}">查看</a></td>
+			<td>${item.merchantName}</td>
+			<td>${item.merchantShopname}</td>
+			<td>${item.merchantAccount}</td>
+			<td>${item.merchantPassword}</td>
+			<td>${item.merchantScope}</td>
+			<td><a href="toupdate?id=${item.id}">修改</a>||<a href="del?id=${item.id}">删除</a>||<a href="queryById?id=${item.id}">查看</a></td>
 		</tr>
 	</c:forEach>
 </table>

@@ -3,6 +3,7 @@ package com.xuxx.spike.service;
 import java.util.List;
 
 import com.xuxx.spike.entity.Merchant;
+import com.xuxx.spike.vo.merchant.MerchantVO;
 
 /**
  * 
@@ -13,11 +14,11 @@ import com.xuxx.spike.entity.Merchant;
  * @since  JDK 1.8
  *
  */
-public interface MerchantService {
+public interface IMerchantService {
 	public void insertMerchant(Merchant merchant);
-	public Merchant queryMerchantById(int id);
+	public Merchant queryMerchantById(String id);
 	public void updateMerchant(Merchant merchant);
-	public void deleteMerchantById(int id);
-	public List<Merchant> queryMerchantByVO();
+	public void deleteMerchantById(String id);
+	public List<Merchant> queryMerchantByVO(MerchantVO merchantVo);
 	public Merchant queryMerchantByaccount(String account);
 }

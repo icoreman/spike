@@ -31,4 +31,6 @@
 	</bean>
 	
 	<mvc:resources mapping="/static/**" location="/static/" />
+	
+	<mvc:view-controller path="/" view-name="redirect:/home/index"/>
 </beans>

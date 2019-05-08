@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xuxx.spike.dao.IProductDao">
+
+	<insert id="add" parameterType="product">
+
+		<selectKey keyProperty="id" order="BEFORE" resultType="string">
+			select REPLACE(UUID(),'-','')
+		</selectKey>
+		insert into spike_product (ID,MERCHANT_ID,PRODUCT_PLACE,PRODUCT_NAME,BRAND_NAME,PRODUCT_WEIGHT,
+		SPECIFICATION,PRODUCT_DETAIL_PICTURE)
+		value
+		(#{id},#{merchantId},#{productPlace},#{productName},#{brandName},#{productWeight},#{specification},
+		#{productDetailPicture})
+	</insert>
+
+	<select id="getById" parameterType="String" resultType="product">
+		select * from
+		spike_product where ID=
+		#{value}
+	</select>
+
+	<update id="update" parameterType="product">
+		update spike_product set
+		PRODUCT_PLACE=#{productPlace},PRODUCT_NAME=#{productName},BRAND_NAME=#{brandName},
+		PRODUCT_WEIGHT=#{productWeight},SPECIFICATION=#{specification},PRODUCT_DETAIL_PICTURE=#{productDetailPicture}
+		where ID=#{id}
+	</update>
+
+	<sql id="consutomsql">
+		<if test="constomProduct != null">
+			<if test="constomProduct.merchantId!=null and constomProduct.merchantId!=''">
+				and MERCHANT_ID = "${constomProduct.merchantId}"
+			</if>
+		</if>
+	</sql>
+	<select id="listByVO" parameterType="productVO" resultType="product">
+		select * from spike_product
+		<where>
+			<include refid="consutomsql"></include>
+		</where>
+	</select>
+</mapper>

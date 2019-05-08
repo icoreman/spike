@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-${error }
-<form action="/YF_MS_WEB/msmerchantReloginAction/login" method="post">
-	商家账号:<input name="useraccount"></br>
-	商家密码:<input name="userpassword"></br>
+<form action="regiter" method="post">
+	商家的姓名:<input name="merchantName"></br>
+	商家的店铺名称:<input name="merchantShopname"></br>
+	商家账号:<input name="merchantAccount"></br>
+	商家密码:<input type="password" name="merchantPassword"></br>
+	商家经营范围:<input name="merchantScope"></br>
 	<input type="button" value="提交" onclick="submit(this)">
 </form>
 </body>

@@ -8,11 +8,11 @@
 </head>
 <body>
 <form action="add">
-	商家的姓名:${msmerchant.merchantname }</br>
-	商家的店铺名称:${msmerchant.merchantshopname }</br>
-	商家账号:${msmerchant.merchantaccount }</br>
-	商家密码:${msmerchant.merchantpassword }</br>
-	商家经营范围:${msmerchant.merchantscope }</br>
+	商家的姓名:${merchant.merchantName}</br>
+	商家的店铺名称:${merchant.merchantShopname}</br>
+	商家账号:${merchant.merchantAccount}</br>
+	商家密码:${merchant.merchantPassword}</br>
+	商家经营范围:${merchant.merchantScope}</br>
 </form>
 </body>
 </html>

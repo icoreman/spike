@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xuxx.spike.entity.Merchant;
-import com.xuxx.spike.service.MerchantService;
+import com.xuxx.spike.service.IMerchantService;
+import com.xuxx.spike.vo.merchant.MerchantVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,9 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/merchant")
 public class MerchantController {
 	@Autowired
-	private MerchantService merchantService;
+	private IMerchantService merchantService;
 
-	@RequestMapping("addPage")
+	@RequestMapping("toadd")
 	public String addPage() {
 		return "merchant/add";
 	}
@@ -30,11 +31,11 @@ public class MerchantController {
 	public String add(Merchant merchant) {
 		merchantService.insertMerchant(merchant);
 		log.info("add merchant:{}", merchant);
-		return "redirect:querybyvo";
+		return "redirect:queryByVO";
 	}
 
 	@RequestMapping("toupdate")
-	public String toupdate(HttpServletRequest request, int id) {
+	public String toupdate(HttpServletRequest request, String id) {
 		Merchant Merchant = merchantService.queryMerchantById(id);
 		request.setAttribute("merchant", Merchant);
 		return "merchant/update";
@@ -43,26 +44,26 @@ public class MerchantController {
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(HttpServletRequest request, Merchant merchant) {
 		merchantService.updateMerchant(merchant);
-		return "redirect:querybyvo";
+		return "redirect:queryByVO";
 	}
 
 	@RequestMapping("delete")
-	public String del(HttpServletRequest request, int id) {
+	public String del(HttpServletRequest request, String id) {
 		merchantService.deleteMerchantById(id);
-		return "redirect:querybyvo";
+		return "redirect:queryByVO";
 	}
 
 	@RequestMapping("queryById")
-	public String querybyid(HttpServletRequest request, int id) {
+	public String querybyid(HttpServletRequest request, String id) {
 		Merchant merchant = merchantService.queryMerchantById(id);
 		request.setAttribute("merchant", merchant);
 		return "merchant/view";
 	}
 
 	@RequestMapping("queryByVO")
-	public String queryByVO(HttpServletRequest request) {
-		List<Merchant> list = merchantService.queryMerchantByVO();
-		request.setAttribute("merchantlist", list);
+	public String queryByVO(HttpServletRequest request, MerchantVO merchantVo) {
+		List<Merchant> list = merchantService.queryMerchantByVO(merchantVo);
+		request.setAttribute("merchantList", list);
 		return "merchant/list";
 	}
 }

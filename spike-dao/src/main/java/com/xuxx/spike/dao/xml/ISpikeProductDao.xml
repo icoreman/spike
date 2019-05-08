@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xuxx.spike.dao.ISpikeProductDao">
+	<insert id="applySpikeProduct" parameterType="spikeProductInfo">
+
+		<selectKey keyProperty="id" order="BEFORE" resultType="string">
+			select REPLACE(UUID(),'-','')
+		</selectKey>
+		insert into spike_product_info
+		(id,PRODUCT_ID,PRODUCT_TITLE,PRODUCT_PICTURE,SPIKE_PRICE,ORIGINAL_PRICE,MERCHANT_ID,APPLY_DATE,
+		AUDIT_STATE,START_TIME,END_TIME,PRODUCT_COUNT,STOCK_COUNT,DESCRIPTION)
+		value(#{id},#{productId},#{productTitle},#{productPicture},#{spikePrice},#{originalPrice},#{merchantId},
+		#{applyDate},#{auditState},#{startTime},#{endTime},#{productCount},#{stockCount},#{description})
+	</insert>
+
+	<sql id="consutomsql">
+		<if test="constomProduct != null">
+			<if test="constomProduct.productId!=null and constomProduct.productId!=''">
+				and PRODUCT_ID = "${constomProduct.productId}"
+			</if>
+			<if test="constomProduct.productTitle!=null and constomProduct.productTitle!='' ">
+				and PRODUCT_TITLE like "%${constomProduct.productTitle}%"
+			</if>
+			<if test="constomProduct.startSpikePrice!=null and constomProduct.startSpikePrice!='' ">
+				and SPIKE_PRICE <![CDATA[ >= ]]>
+				"${constomProduct.startSpikePrice}"
+			</if>
+			<if test="constomProduct.endSpikePrice!=null and constomProduct.endSpikePrice!='' ">
+				and SPIKE_PRICE <![CDATA[ <= ]]>
+				"${constomProduct.endSpikePrice}"
+			</if>
+			<if test="constomProduct.startOriginalPrice!=null and constomProduct.startOriginalPrice!='' ">
+				and ORIGINAL_PRICE <![CDATA[ >= ]]>
+				"${constomProduct.startOriginalPrice}"
+			</if>
+			<if test="constomProduct.endOriginalPrice!=null and constomProduct.endOriginalPrice!='' ">
+				and ORIGINAL_PRICE <![CDATA[ <= ]]>
+				"${constomProduct.endOriginalPrice}"
+			</if>
+			<if test="constomProduct.description!=null and constomProduct.description!=''">
+				and DESCRIPTION like "%${constomProduct.description}%"
+			</if>
+			<if test="constomProduct.auditState!=null and constomProduct.auditState!='' ">
+				and AUDIT_STATE = "${constomProduct.auditState}"
+			</if>
+			<if test="constomProduct.startStartTime!=null and constomProduct.startStartTime!='' ">
+				and START_TIME <![CDATA[ >= ]]>
+				#{constomProduct.startStartTime
+			</if>
+			<if test="constomProduct.endStartTime!=null and constomProduct.endStartTime!='' ">
+				and START_TIME <![CDATA[ <= ]]>
+				#{constomProduct.endStartTime}
+			</if>
+			<if test="constomProduct.startEndTime!=null and constomProduct.startEndTime!='' ">
+				and END_TIME <![CDATA[ >= ]]>
+				#{constomProduct.startEndTime}
+			</if>
+			<if test="constomProduct.endEndTime!=null and constomProduct.endEndTime!='' ">
+				and END_TIME <![CDATA[ <= ]]>
+				#{constomProduct.endEndTime}
+			</if>
+		</if>
+	</sql>
+
+	<select id="listByVO" parameterType="spikeProductVO" resultType="spikeProductInfo">
+		select * from spike_product_info
+		<where>
+			<include refid="consutomsql"></include>
+		</where>
+	</select>
+
+	<delete id="delete" parameterType="String">
+		delete from spike_product_info where
+		ID=#{id}
+	</delete>
+
+	<update id="update" parameterType="spikeProductInfo">
+		update spike_product_info set
+		PRODUCT_TITLE=#{productTitle},PRODUCT_PICTURE=#{productPicture},SPIKE_PRICE=#{spikePrice},ORIGINAL_PRICE=#{originalPrice},
+		START_TIME=#{startTime},END_TIME=#{endTime},PRODUCT_COUNT=#{productCount},STOCK_COUNT=#{stockCount},DESCRIPTION=#{description}
+		where ID=#{id}
+	</update>
+
+	<update id="updateSpikeProductState" parameterType="spikeProductVO">
+		update spike_product_info set
+		AUDIT_STATE=#{constomProduct.auditState} where id=#{constomProduct.id}
+	</update>
+
+	<select id="getById" parameterType="String" resultType="spikeProductInfo">
+		select * from
+		spike_product_info
+		where id = #{value}
+	</select>
+</mapper>
