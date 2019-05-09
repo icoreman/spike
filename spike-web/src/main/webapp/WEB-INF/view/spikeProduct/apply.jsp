@@ -8,12 +8,14 @@
 </head>
 <body>
 <form action="apply" method="post">
-	商品id:<input name="productId"></br>
-	商品标题:<input name="productTitle"></br>
-	商品图片地址:<input name="productPicture"></br>
+	<input name="productId" type="hidden" value="${spikeProductInfo.productId}">
+	<input name="merchantId" type="hidden" value="${spikeProductInfo.merchantId}">
+	
+	商品标题:<input name="productTitle" value="${spikeProductInfo.productTitle}"></br>
+	商品图片地址:<input name="productPicture" value="${spikeProductInfo.productPicture}"></br>
 	秒杀价格:<input name="spikePrice"></br>
 	商品原价:<input name="originalPrice"></br>
-	商家id:<input name="merchantId"></br>
+	
 	秒杀开始时间:<input name="startTimeString"></br>
 	秒杀结束时间:<input name="endTimeString"></br>
 	秒杀商品数量:<input name="productCount"></br>

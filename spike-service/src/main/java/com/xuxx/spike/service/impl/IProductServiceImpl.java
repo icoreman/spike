@@ -11,6 +11,7 @@ import com.xuxx.spike.service.IProductService;
 import com.xuxx.spike.vo.product.ProductVO;
 
 @Service
+@org.apache.dubbo.config.annotation.Service(interfaceClass = IProductService.class)
 public class IProductServiceImpl implements IProductService {
 
 	@Autowired
@@ -33,6 +34,6 @@ public class IProductServiceImpl implements IProductService {
 
 	@Override
 	public List<Product> listByProductVO(ProductVO productVO) {
-		return productDao.listByProductVO(productVO);
+		return productDao.listByVO(productVO);
 	}
 }

@@ -8,17 +8,18 @@
 </head>
 <body>
 <form >
-	商品产地:${productDetail.productPlace}</br>
-	商品名称:${productDetail.productName}</br>
-	商品品牌:${productDetail.brandName}</br>
-	商品重量:${productDetail.productWeight}</br>
-	规格和包装:${productDetail.specification}</br>
-	商品详情图片地址:${productDetail.productDetailPicture}</br>
+	商品产地:${product.productPlace}</br>
+	商品名称:${product.productName}</br>
+	商品品牌:${product.brandName}</br>
+	商品重量:${product.productWeight}</br>
+	规格和包装:${product.specification}</br>
+	商品详情图片地址:${product.productPicture}</br>
+	<input type="button" onclick="back(this)" value="返回">
 </form>
 </body>
 <script type="text/javascript">
-	function submit(obj){
-		obj.parent.sumbit();
+	function back(obj) {
+		history.back();
 	}
 </script>
 </html>

@@ -8,9 +8,9 @@
 </head>
 <body>
 ${error }
-<form action="/spike-web/merchant/login" method="post">
-	商家账号:<input name="useraccount"></br>
-	商家密码:<input name="userpassword"></br>
+<form action="/spike-web/merichantAdmin/login" method="post">
+	商家账号:<input name="merchantAccount"></br>
+	商家密码:<input name="merchantPassword"></br>
 	<input type="button" value="提交" onclick="submit(this)">
 </form>
 </body>

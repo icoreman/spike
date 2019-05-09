@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select REPLACE(UUID(),'-','')
 		</selectKey>
 		insert into spike_product (ID,MERCHANT_ID,PRODUCT_PLACE,PRODUCT_NAME,BRAND_NAME,PRODUCT_WEIGHT,
-		SPECIFICATION,PRODUCT_DETAIL_PICTURE)
+		SPECIFICATION,PRODUCT_PICTURE)
 		value
 		(#{id},#{merchantId},#{productPlace},#{productName},#{brandName},#{productWeight},#{specification},
-		#{productDetailPicture})
+		#{productPicture})
 	</insert>
 
 	<select id="getById" parameterType="String" resultType="product">
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update" parameterType="product">
 		update spike_product set
 		PRODUCT_PLACE=#{productPlace},PRODUCT_NAME=#{productName},BRAND_NAME=#{brandName},
-		PRODUCT_WEIGHT=#{productWeight},SPECIFICATION=#{specification},PRODUCT_DETAIL_PICTURE=#{productDetailPicture}
+		PRODUCT_WEIGHT=#{productWeight},SPECIFICATION=#{specification},PRODUCT_PICTURE=#{productPicture}
 		where ID=#{id}
 	</update>
 

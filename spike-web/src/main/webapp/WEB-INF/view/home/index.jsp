@@ -14,7 +14,17 @@
 <a href="/spike-web/frontUser/logout">退出登录</a>
 
 <table border="2">
-
+	<c:forEach items="${list}" var="item">
+		<tr>
+		<td>${item.productTitle}</td>
+		<td>${item.productPicture}</td>
+		<td>${item.spikePrice}</td>
+		<td>${item.originalPrice}</td>
+		<td>${item.startTime}</td>
+		<td>${item.endTime}</td>
+		<td><a href="viewProductDetail?id=${item.id}">查看</a></td>
+		</tr>
+	</c:forEach>
 </table>
 <script src="/spike-web/static/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">

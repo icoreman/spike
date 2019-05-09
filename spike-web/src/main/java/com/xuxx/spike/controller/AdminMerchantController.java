@@ -67,6 +67,6 @@ public class AdminMerchantController {
 		HttpSession session = req.getSession();
 		session.removeAttribute("merchant");
 
-		return "admin/index";
+		return "redirect:/admin/index";
 	}
 }

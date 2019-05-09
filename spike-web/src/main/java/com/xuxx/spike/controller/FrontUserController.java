@@ -66,7 +66,7 @@ public class FrontUserController {
 		} else {
 			HttpSession sess = req.getSession();
 			sess.setAttribute("user", userResult);
-			returnUrl = "home/index";
+			returnUrl = "redirect:home/index";
 		}
 		return returnUrl;
 	}

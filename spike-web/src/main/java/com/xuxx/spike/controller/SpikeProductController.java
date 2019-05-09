@@ -4,13 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.xuxx.spike.entity.Merchant;
+import com.xuxx.spike.entity.Product;
 import com.xuxx.spike.entity.SpikeProductInfo;
+import com.xuxx.spike.service.IProductService;
 import com.xuxx.spike.service.ISpikeProductService;
 import com.xuxx.spike.util.DateUtils;
 import com.xuxx.spike.vo.spike.SpikeProductVO;
@@ -22,13 +26,24 @@ public class SpikeProductController {
 	@Autowired
 	private ISpikeProductService spikeProductService;
 
+	@Autowired
+	private IProductService productService;
+
 	@RequestMapping(value = "toApply")
-	public String toApplymsproduct() {
+	public String toApplymsproduct(HttpServletRequest request, String productId) {
+		Product product = productService.getById(productId);
+		SpikeProductInfo spikeProductInfo = new SpikeProductInfo();
+		spikeProductInfo.setProductId(product.getId());
+		spikeProductInfo.setMerchantId(product.getMerchantId());
+		spikeProductInfo.setProductTitle(product.getBrandName() + "-" + product.getProductName());
+		spikeProductInfo.setProductPicture(product.getProductPicture());
+		
+		request.setAttribute("spikeProductInfo", spikeProductInfo);
 		return "spikeProduct/apply";
 	}
 
 	@RequestMapping(value = "apply", method = RequestMethod.POST)
-	public String apply(SpikeProductInfo spikeProductInfo) {
+	public String apply(HttpServletRequest request, SpikeProductInfo spikeProductInfo) {
 		spikeProductService.applySpikeProduct(spikeProductInfo);
 		return "redirect:list";
 	}
@@ -50,7 +65,7 @@ public class SpikeProductController {
 	@RequestMapping(value = "delete")
 	public String delete(HttpServletRequest req, String id) {
 		spikeProductService.deleteSpikeProductById(id);
-		return "redirect:listmsproduct";
+		return "redirect:list";
 	}
 
 	@RequestMapping(value = "toupdate")

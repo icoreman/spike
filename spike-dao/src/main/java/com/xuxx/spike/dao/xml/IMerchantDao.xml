@@ -54,9 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
-	<select id="getByaccount" parameterType="string" resultType="merchant">
+	<select id="getByAccount" parameterType="string" resultType="merchant">
 		select * from
-		spike_merchant where MERCHANT_ACCOUNT = #{value}
+		spike_merchant where MERCHANT_ACCOUNT=#{value}
 	</select>
 
 </mapper>

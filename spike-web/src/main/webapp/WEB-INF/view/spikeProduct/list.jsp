@@ -18,7 +18,7 @@
 		<td>商家id</td>
 		<td>秒杀原价</td>
 		<td>申请时间</td>
-		<td>转态</td>
+		<td>审批状态</td>
 		<td>秒杀开始时间</td>
 		<td>秒杀结束时间</td>
 		<td>秒杀商品数</td>
@@ -36,13 +36,13 @@
 		<td>${item.originalPrice}</td>
 		<td>${item.applyDate}</td>
 		<td>${item.auditState}</td>
-		<td>${item.startTime}</td>
-		<td>${item.endTime}</td>
+		<td><fmt:formatDate value="${spikeProductInfo.startTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+		<td><fmt:formatDate value="${spikeProductInfo.endTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 		<td>${item.productCount}</td>
 		<td>${item.stockCount}</td>
 		<td>${item.description}</td>
-		<td><a href="toupdate?id=${item.id}">修改</a>||<a href="delete?id=${item.id}">删除</a>||<a href="query?id=${item.id}">查看</a>||<a href="toaduit=${item.id}">审核</a>
-		||<a href="/spike-web/productDetail/toquery?id=${item.productId}">查看商品详情</a>||<a href="/spike-web/productDetail/toupdate?productId=${item.productId}">修改商品详情</a></td>
+		<td><a href="toupdate?id=${item.id}">修改</a>||<a href="delete?id=${item.id}">删除</a>||<a href="query?id=${item.id}">查看</a>||<a href="toaduit?id=${item.id}">审核</a>
+		||<a href="/spike-web/product/query?id=${item.productId}">查看原始商品</a>||<a href="/spike-web/product/toupdate?id=${item.productId}">修改原始商品</a></td>
 		</tr>
 	</c:forEach>
 </table>

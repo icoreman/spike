@@ -14,6 +14,7 @@ import com.xuxx.spike.vo.spike.ConstomSpikeProduct;
 import com.xuxx.spike.vo.spike.SpikeProductVO;
 
 @Service
+@org.apache.dubbo.config.annotation.Service(interfaceClass = ISpikeProductService.class)
 public class ISpikeProductServiceImpl implements ISpikeProductService {
 
 	@Autowired

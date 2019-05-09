@@ -7,9 +7,12 @@
 <title>商家</title>
 </head>
 <body>
-欢迎商家：${msmerchant.merchantaccount}
+欢迎商家：${merchant.merchantAccount}
 <a href="/spike-web/merichantAdmin/toregister">商家注册</a></br>
 <a href="/spike-web/merichantAdmin/tologin">商家登录</a>
-<a href="/spike-webB/merichantAdmin/logout">商家退出登录</a>
+<a href="/spike-web/merichantAdmin/logout">商家退出登录</a><br>
+<a href="/spike-web/product/list">商品管理</a>
+<a href="/spike-web/spikeProduct/list">秒杀商品管理</a>
+
 </body>
 </html>

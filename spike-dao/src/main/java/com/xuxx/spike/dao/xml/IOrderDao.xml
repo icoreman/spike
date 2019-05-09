@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xuxx.spike.dao.IOrderDao">
+
+	<insert id="insert" parameterType="order">
+
+		<selectKey keyProperty="id" order="BEFORE" resultType="string">
+			select REPLACE(UUID(),'-','')
+		</selectKey>
+		insert into
+		spike_order(ID,PRODUCT_ID,PAY_AMOUNT,USER_ID,MERCHANT_ID,ORDER_TIME,PAY_STATUS,RECEIVE_ADDRESS,RECEIVE_PHONE,
+		RECEIVE_NAME,TRADESERIAL_NUMBER,NUM)
+		value(${id},#{productId},#{payAmount},#{userId},#{merchantId},#{orderTime},#{payStatus},#{receiveAdress},
+		#{receivePhone},#{receiveName},#{tradeSerialNumber},#{num})
+	</insert>
+
+	<select id="listByUserId" parameterType="String" resultType="order">
+		select * from spike_order where
+		USER_ID = #{value}
+	</select>
+
+	<select id="queryByMerchantId" parameterType="String" resultType="order">
+		select * from order where
+		MERCHANT_ID = #{value}
+	</select>
+
+
+	<update id="updatePayStatusById" parameterType="orderVO">
+		update spike_order set
+		payStatus=#{constomOrder.payStatus} where ID=#{constomOrder.id}
+	</update>
+
+	<update id="updatePay" parameterType="orderVo">
+		update spike_order set
+		PAY_STATUS=#{constomOrder.payStatus},PAY_TIME=#{constomOrder.payType},PAY_TIME=#{constomOrder.payTime}
+		where ID=#{constomOrder.id}
+	</update>
+</mapper>
