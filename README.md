@@ -4,7 +4,7 @@ TODOList:
 - [x] Spring/Spring mvc 包扫描隔离（后续其他框架与 Spring 整合都要做隔离）
 - [x] dubbo/zookeeper 搭建
 - [x] Lomlok 
-- [ ] Maven 环境隔离
+- [x] Maven 环境隔离
 - [ ] Logback
 - [ ] SSO 登录
 - [ ] 全局异常处理

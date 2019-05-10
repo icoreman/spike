@@ -10,6 +10,7 @@
 	<dubbo:application name="SPIKE_WEB" />
 	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 	<dubbo:protocol name="dubbo" port="-1" />
+	
 	<dubbo:reference id="merchantService" check="false" timeout="5000"
 		interface="com.xuxx.spike.service.IMerchantService" />
 	<dubbo:reference id="userService" interface="com.xuxx.spike.service.IUserService"

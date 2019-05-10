@@ -29,6 +29,7 @@
 		<dubbo.version>2.7.1</dubbo.version>
 		<druid.version>1.1.6</druid.version>
 		<lombok.version>1.18.6</lombok.version>
+		<logback.version>1.1.2</logback.version>
 		<slf4j-api.version>1.6.1</slf4j-api.version>
 		<spring.version>4.3.16.RELEASE</spring.version>
 		<servlet-api.version>2.4</servlet-api.version>
@@ -118,24 +119,44 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/main/resources.${deploy.type}</directory>
+				<excludes>
+					<exclude>*.jsp</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 	</build>
 
 	<profiles>
 		<profile>
-			<id>default</id>
+			<id>local</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
+				<deploy.type>local</deploy.type>
 				<maven.test.skip>true</maven.test.skip>
+				<javadoc.opts>-Xdoclint:none</javadoc.opts>
 			</properties>
 		</profile>
 		<profile>
-			<id>disable-javadoc-doclint</id>
-			<activation>
-				<jdk>[1.8,)</jdk>
-			</activation>
+			<id>dev</id>
 			<properties>
+				<deploy.type>dev</deploy.type>
+				<maven.test.skip>true</maven.test.skip>
+				<javadoc.opts>-Xdoclint:none</javadoc.opts>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<deploy.type>prod</deploy.type>
+				<maven.test.skip>true</maven.test.skip>
 				<javadoc.opts>-Xdoclint:none</javadoc.opts>
 			</properties>
 		</profile>
