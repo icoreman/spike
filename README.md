@@ -8,7 +8,7 @@ TODOList:
 - [x] Logback
 - [ ] SSO 登录
 - [ ] 全局异常处理
-- [ ] Srping Session session共享
+- [ ] Sping Session session共享
 - [ ] Spring Schedule
 - [ ] FTP 文件服务器搭建
 - [ ] shell 脚本自动发布

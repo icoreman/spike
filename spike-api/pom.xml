@@ -7,7 +7,7 @@
   </parent>
   <artifactId>spike-api</artifactId>
   <name>spike-api</name>
-  <description>service 层接口定义</description>
+  <description>此模块将优化为公共、对外的接口层</description>
   <dependencies>
   	<dependency>
   		<groupId>com.xuxx</groupId>

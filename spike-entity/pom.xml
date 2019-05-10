@@ -7,7 +7,7 @@
   </parent>
   <artifactId>spike-entity</artifactId>
   <name>spike-entity</name>
-  <description>entity、vo等实体定义</description>
+  <description>entity、vo等pojo定义</description>
   <dependencies>
   	<dependency>
   		<groupId>com.xuxx</groupId>
