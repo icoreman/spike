@@ -5,7 +5,7 @@ TODOList:
 - [x] dubbo/zookeeper 搭建
 - [x] Lomlok 
 - [x] Maven 环境隔离
-- [ ] Logback
+- [x] Logback
 - [ ] SSO 登录
 - [ ] 全局异常处理
 - [ ] Srping Session session共享

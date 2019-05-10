@@ -19,16 +19,19 @@ import com.xuxx.spike.service.ISpikeProductService;
 import com.xuxx.spike.vo.spike.ConstomSpikeProduct;
 import com.xuxx.spike.vo.spike.SpikeProductVO;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("home")
 public class HomeController {
-	
+
 	@Autowired
 	private IProductService productService;
-	
+
 	@Autowired
 	private ISpikeProductService spikeProductService;
-	
+
 	@RequestMapping("index")
 	public String tohome(HttpServletRequest request) {
 		SpikeProductVO spikeProductVO = new SpikeProductVO();
@@ -36,25 +39,24 @@ public class HomeController {
 		constomProduct.setStartTime(new Date());
 		constomProduct.setAuditState(1);
 		spikeProductVO.setConstomProduct(constomProduct);
-		
-		List<SpikeProductInfo> list = spikeProductService.listSpikeProduct(spikeProductVO);
-		
-		request.setAttribute("list", list);
 
+		List<SpikeProductInfo> list = spikeProductService.listSpikeProduct(spikeProductVO);
+
+		request.setAttribute("list", list);
+		
 		return "home/index";
 	}
 
 	@RequestMapping("viewProductDetail")
-	public String viewProductDetail(HttpServletRequest req,String id){
+	public String viewProductDetail(HttpServletRequest req, String id) {
 		SpikeProductInfo spikeProductInfo = spikeProductService.querySpikeProductById(id);
 		Product product = productService.getById(spikeProductInfo.getProductId());
-		
+
 		req.setAttribute("product", product);
 		req.setAttribute("spikeProductInfo", spikeProductInfo);
 		return "order/order";
 	}
-	
-	
+
 	@RequestMapping("getUser")
 	@ResponseBody
 	public String getuser(HttpServletRequest req) {
@@ -64,7 +66,7 @@ public class HomeController {
 		if (user != null) {
 			account = user.getUserAccount();
 		}
-		
+
 		return account;
 	}
 }
