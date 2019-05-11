@@ -6,6 +6,9 @@ TODOList:
 - [x] Lomlok 
 - [x] Maven 环境隔离
 - [x] Logback
+- [ ] 独立 user 模块
+- [ ] 使用 mybatis-generator-maven-plugin 逆向生成代码
+- [ ] 使用 com.github.pagehelper
 - [ ] SSO 登录
 - [ ] 全局异常处理
 - [ ] Sping Session session共享
