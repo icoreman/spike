@@ -13,8 +13,9 @@
 		<module>spike-common</module>
 		<module>spike-dao</module>
 		<module>spike-service</module>
-		<module>spike-entity</module>
+		<module>spike-pojo</module>
 		<module>spike-api</module>
+		<module>spike-user-service</module>
 	</modules>
 
 	<properties>

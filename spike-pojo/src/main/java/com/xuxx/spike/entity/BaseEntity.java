@@ -12,10 +12,10 @@ public class BaseEntity implements Serializable{
 	@Getter
 	private static final long serialVersionUID = 3333945537180514900L;
 	
-	private String id;
-	private String revision;
-	private String createBy;
-	private Date createTime;
-	private String updatedBy;
-	private Date updatedTime;
+	protected String id;
+	protected Integer revision;
+	protected String createdBy;
+	protected Date createdTime;
+	protected String updatedBy;
+	protected Date updatedTime;
 }

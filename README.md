@@ -7,7 +7,7 @@ TODOList:
 - [x] Maven 环境隔离
 - [x] Logback
 - [ ] 独立 user 模块
-- [ ] 使用 mybatis-generator-maven-plugin 逆向生成代码
+- [x] [使用 mybatis-generator-maven-plugin 逆向生成代码](https://www.jianshu.com/p/b243f3ec8419)
 - [ ] 使用 com.github.pagehelper
 - [ ] SSO 登录
 - [ ] 全局异常处理
