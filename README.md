@@ -1,4 +1,4 @@
-# 一个简单的秒杀系统
+# 暂停开发
 TODOList:
 - [x] ssm 搭建
 - [x] Spring/Spring mvc 包扫描隔离（后续其他框架与 Spring 整合都要做隔离）
